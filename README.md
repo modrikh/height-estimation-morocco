@@ -62,7 +62,7 @@ For each city, place:
 
 ---
 
-## 🧾 Generate CSV for Training
+## Generate CSV for Training
 
 Run this script to generate the file `train_clean.csv`:
 
