@@ -119,7 +119,7 @@ After training, final validation metrics are shown and saved.
 
 ---
 
-## 🔧 Dependencies
+## Dependencies
 
 * Python 3.8+
 * TensorFlow ≥ 2.9
