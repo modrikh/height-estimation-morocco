@@ -130,10 +130,3 @@ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-
-
-* `predict.py` to run inference on new cities
-* Docker or Colab setup
-* Live demo instructions (e.g., using Streamlit)
-
-I'll be happy to generate those next!
