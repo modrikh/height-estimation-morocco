@@ -94,7 +94,7 @@ Casablanca_Building_Height_10m.tif,Casablanca_S1_2023.tif,Casablanca_S2_2023.tif
 ## Train the Model ( using a virtual enviroment ) 
 
 ```bash
-python - m code.training.train.py
+python -m code.training.train.py
 ```
 
 This will:
