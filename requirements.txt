@@ -1,7 +1,4 @@
 # requirements.txt
-
----
-
 tensorflow>=2.9.0
 keras>=2.9.0
 numpy>=1.21.0
