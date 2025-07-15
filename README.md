@@ -67,7 +67,7 @@ For each city, place:
 Run this script to generate the file `train_clean.csv`:
 
 ```bash
-python code/utils/generate_csv.py
+python csv_gen.py
 ```
 
 It will output:
