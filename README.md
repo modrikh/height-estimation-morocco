@@ -14,7 +14,7 @@ This project implements a deep learning model to estimate per-pixel **building h
 │   ├── ref/
 │   │   ├── dem/               # FABDEM
 │   │   ├── dsm/               # AW3D30
-│   │   └── heigth/            # Precomputed DSM − DEM labels
+│   │   └── heigth/            # Any availabe reference dataset
 │   └── splits/
 │       └── train_clean.csv    # CSV of matched tiles
 ├── code/
