@@ -3,7 +3,7 @@ import tensorflow.keras.backend as K
 
 # === Recommended: Combined MSE + Cosine Similarity ===
 def combined_mse_cosine_loss(y_true, y_pred):
-    # Replace NaNs with zeros
+
     y_true = tf.where(tf.math.is_nan(y_true), tf.zeros_like(y_true), y_true)
     y_pred = tf.where(tf.math.is_nan(y_pred), tf.zeros_like(y_pred), y_pred)
 
@@ -46,7 +46,7 @@ def SSIM_loss_graph(target, pred):
     ssim_loss_weight = 0.3
     mse_loss_weight = 0.5
     rmse_loss_weight = 0.2
-    max_val = 100.0  # max expected height in meters
+    max_val = 100.0  
 
     ssim = tf.image.ssim(target, pred, max_val=max_val)
     ssim_loss = tf.reduce_mean(1.0 - ssim)

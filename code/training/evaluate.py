@@ -1,4 +1,3 @@
-# evaluate.py (Corrigé pour utiliser la nouvelle logique du générateur)
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -49,20 +48,14 @@ s1_full = GRD_toRGB_S1(S1_PATH, f"{city}_S1.tif")
 s2_full = GRD_toRGB_S2(S2_PATH, f"{city}_S2.tif", S2_MAX)
 dem_full = load_dem(DEM_PATH, f"{city}_DSM.tif")
 
-# --- DÉBUT DE LA CORRECTION ---
-# On réutilise la même logique que dans le générateur final
+
 from code.generators import MultiTaskPatchGenerator
 temp_gen = MultiTaskPatchGenerator(file_tuples=[], batch_size=1, patch_size=1)
 
-# Lire la carte WorldCover une seule fois
 worldcover_fname = f"{city}_WorldCover_10m.tif"
 worldcover_map_full = temp_gen.read_worldcover_map(worldcover_fname)
 
-# En dériver les deux labels
 true_height_full = temp_gen.create_height_label_from_map(worldcover_map_full)
-# (On n'a pas besoin du label de classe pour cette visualisation, mais la logique est là)
-# true_class_full = temp_gen.create_class_label_from_map(worldcover_map_full)
-# --- FIN DE LA CORRECTION ---
 
 # === 2. Extraire le Patch Central de Toutes les Données ===
 print(f"Extraction du patch central de {patch_size_to_extract}x{patch_size_to_extract}...")
@@ -90,7 +83,6 @@ fig, axes = plt.subplots(2, 2, figsize=(12, 12), constrained_layout=True)
 fig.suptitle(f'Analyse Qualitative des Prédictions - {city}', fontsize=16)
 vmax_height = max(1, np.max(true_map)) # Assurer que vmax n'est pas 0
 
-# ... (Le reste du code de plotting est correct et n'a pas besoin de changer) ...
 
 # (A) Image Optique
 axes[0, 0].imshow(s2_rgb_patch); axes[0, 0].set_title('(A) Image Optique (Sentinel-2)'); axes[0, 0].axis('off')

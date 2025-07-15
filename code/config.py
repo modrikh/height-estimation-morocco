@@ -1,4 +1,3 @@
-# code/config.py
 
 from pathlib import Path
 
@@ -31,13 +30,8 @@ EPOCHS = 50
 LEARNING_RATE = 1e-4
 
 # === Configuration Multi-Tâches ===
-# Classification binaire : 0 = Non-Bâti, 1 = Bâti
 NUM_CLASSES = 2
-# La valeur de la classe "Built-up" dans les fichiers WorldCover originaux
 BUILT_UP_CLASS_ID = 50
-# Hauteur par défaut (en mètres) à assigner aux pixels de bâtiments pour la régression
 DEFAULT_BUILDING_HEIGHT = 10.0
-
-# Poids pour les fonctions de perte
 LOSS_WEIGHT_REGRESSION = 0.6
 LOSS_WEIGHT_CLASSIFICATION = 0.4

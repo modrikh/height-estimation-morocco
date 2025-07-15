@@ -1,4 +1,3 @@
-# code/training/train.py
 
 import sys
 from pathlib import Path
@@ -12,7 +11,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLRO
 
 from code.config import *
 from code.generators import MultiTaskPatchGenerator
-from code.losses import combined_mse_cosine_loss # Assurez-vous que ce fichier existe et contient la fonction
+from code.losses import combined_mse_cosine_loss 
 from code.metrics import rmse_metric, mae_metric, r2_metric_buildings_only
 from code.utils import load_data
 from code.models.architectures import build_multitask_mbhr_resnet
@@ -87,4 +86,4 @@ plot_training_history(history)
 
 print(f"\nSauvegarde du modèle final dans : {final_model_path}")
 save_model(model, str(final_model_path))
-print("✅ Modèle final sauvegardé.")
+print("Modèle final sauvegardé.")

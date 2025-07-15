@@ -1,4 +1,3 @@
-# code/models/architectures.py (Correction finale avec Backbone Partagé)
 
 import tensorflow as tf
 from tensorflow.keras import layers, Model, Input
@@ -19,25 +18,20 @@ def build_multitask_mbhr_resnet(input_shape_s1, input_shape_s2, input_shape_dem,
     s2_pre = layers.Conv2D(3, kernel_size=1, padding='same', name='s2_to3ch')(input_s2)
 
     # === Encodeur ResNet50 PARTAGÉ ===
-    # 1. Créer UN SEUL backbone ResNet50 qui sera partagé
     resnet_backbone = ResNet50(include_top=False, weights=None, input_shape=(None, None, 3))
     
-    # 2. Créer un "extracteur de features" à partir de ce backbone.
-    #    Ce modèle prend une entrée et retourne les sorties des couches intermédiaires.
     layer_names = [
         'conv1_relu',
         'conv2_block3_out',
         'conv3_block4_out',
         'conv4_block6_out',
-        'conv5_block3_out'  # Bottleneck
+        'conv5_block3_out' 
     ]
     feature_extractor = Model(inputs=resnet_backbone.input, outputs=[resnet_backbone.get_layer(name).output for name in layer_names], name="resnet_feature_extractor")
     
-    # 3. Appliquer cet extracteur à chaque entrée. C'est ici que les poids sont partagés.
     s1_skips_and_bottleneck = feature_extractor(s1_pre)
     s2_skips_and_bottleneck = feature_extractor(s2_pre)
     
-    # Séparer les listes de sorties en skip connections et bottleneck
     s1_skips = s1_skips_and_bottleneck[:-1]
     s1_bottleneck = s1_skips_and_bottleneck[-1]
     

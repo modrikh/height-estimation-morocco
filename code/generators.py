@@ -1,4 +1,3 @@
-# code/generators.py
 
 import tensorflow as tf
 import cv2
@@ -44,7 +43,6 @@ class MultiTaskPatchGenerator(tf.keras.utils.Sequence):
                     for img in [s1_full, s2_full, dem_full, height_label_full, class_label_full]
                 ]
 
-                # (Logique d'augmentation ici)
                 
                 batch_s1.append(s1_patch); batch_s2.append(s2_patch); batch_dem.append(dem_patch)
                 batch_labels_reg.append(height_patch); batch_labels_cls.append(class_patch)

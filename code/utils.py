@@ -15,7 +15,7 @@ def load_data(csv_path, split_ratio=0.2):
     rows = []
     with open(csv_path, 'r') as f:
         reader = csv.reader(f)
-        header = next(reader)  # skip header
+        header = next(reader) 
         for row in reader:
             if len(row) != 4:
                 print(f"⚠️ Skipping invalid row: {row}")
@@ -39,7 +39,7 @@ def load_resized_dem(dem_path, target_shape=(IMG_HEIGHT, IMG_WIDTH)):
     Reads a DEM raster, resizes to (IMG_HEIGHT, IMG_WIDTH), and normalizes
     """
     with rasterio.open(dem_path) as src:
-        dem = src.read(1)  # Single band
+        dem = src.read(1)  
     dem = np.nan_to_num(dem)
     dem_resized = cv2.resize(dem, target_shape, interpolation=cv2.INTER_AREA)
     return normalize_dem(dem_resized).reshape(target_shape + (1,))
